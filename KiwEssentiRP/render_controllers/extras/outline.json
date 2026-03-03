@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.outline": {
+      "geometry": "Geometry.outline",
+      "materials": [
+        {
+          "*": "Material.outline"
+        }
+      ],
+      "textures": [ "Texture.outline" ],
+      "ignore_lighting": true
+    },
+    "controller.render.outline_highlight": {
+      "geometry": "Geometry.outline",
+      "materials": [
+        {
+          "*": "Material.outline"
+        }
+      ],
+      "textures": [ "Texture.outline" ],
+      "ignore_lighting": true,
+      "light_color_multiplier": 10
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.shine": {
+      "geometry": "geometry.shine",
+      "textures": [ "texture.shine" ],
+      "ignore_lighting": true,
+      "light_color_multiplier": 0.6,
+      "materials": [
+        {
+          "*": "material.shine"
+        }
+      ]
+    }
+  }
+}

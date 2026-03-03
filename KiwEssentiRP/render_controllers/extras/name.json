@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.name": {
+      "geometry": "Geometry.name",
+      "materials": [
+        {
+          "*": "Material.name"
+        }
+      ],
+      "textures": [
+        "Texture.name"
+      ],
+      "is_hurt_color": {},
+			"on_fire_color": {},
+      "ignore_lighting": true,
+      "filter_lighting": true
+    }
+  }
+}

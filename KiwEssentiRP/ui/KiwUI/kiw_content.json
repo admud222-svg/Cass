@@ -1,0 +1,248 @@
+{
+  "namespace": "kiw_content",
+  "content_area": {
+    "type": "panel",
+    "size": ["fill", "100%"],
+    "controls": [
+      {"main_bg@kiw_common.bg_dialog": {}},
+      {"header_area@kiw_header.header_area": {}},
+      {"content_list_full@kiw_content.content_list_panel_full": {}},
+      {"content_list_normal@kiw_content.content_list_panel_normal": {}},
+      {"content_grid_full@kiw_content.content_grid_panel_full": {}},
+      {"content_grid_normal@kiw_content.content_grid_panel_normal": {}}
+    ]
+  },
+  "content_list_panel_full": {
+    "type": "panel",
+    "size": ["95%", "96%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 2,
+    "bindings": [{
+      "binding_type": "view",
+      "source_property_name": "((#title_text = 'Member Menu') or (#title_text = 'Menu Member'))",
+      "target_property_name": "#visible"
+    }],
+    "controls": [{"list_scroller@kiw_content.list_scroller_full": {}}]
+  },
+  "content_list_panel_normal": {
+    "type": "panel",
+    "size": ["100% - 12px", "85%"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [0, 20],
+    "layer": 2,
+    "bindings": [{
+      "binding_type": "view",
+      "source_property_name": "(not ((#title_text = 'Member Menu') or (#title_text = 'Menu Member') or (#title_text = 'KiwEss-Grid') or (#title_text = 'Member Menu Grid') or (#title_text = 'Menu Grid Member')))",
+      "target_property_name": "#visible"
+    }],
+    "controls": [{"list_scroller@kiw_content.list_scroller": {"size": ["100%", "100%"]}}]
+  },
+  "description_area": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100%", "100%c"],
+    "bindings": [{
+      "binding_type": "view",
+      "source_property_name": "(#form_text != '')",
+      "target_property_name": "#visible"
+    }],
+    "controls": [
+      {"top_padding": {"type": "panel", "size": ["100%", 4]}},
+      {"text_panel": {"type": "panel", "size": ["100%", "100%c"], "controls": [{"text": {"type": "label", "text": "#form_text", "color": [1, 1, 1], "font_scale_factor": 1, "size": ["96%", "default"], "text_alignment": "left", "anchor_from": "top_left", "anchor_to": "top_left", "offset": ["2%", 0], "layer": 5, "bindings": [{"binding_name": "#form_text"}]}}]}},
+      {"bottom_padding": {"type": "panel", "size": ["100%", 8]}}
+    ]
+  },
+  "content_grid_panel_full": {
+    "type": "panel",
+    "size": ["100% - 12px", "92%"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [0, -8],
+    "layer": 2,
+    "bindings": [{
+      "binding_type": "view",
+      "source_property_name": "((#title_text = 'Member Menu Grid') or (#title_text = 'Menu Grid Member'))",
+      "target_property_name": "#visible"
+    }],
+    "controls": [{"grid_scroller@kiw_content.grid_mode_scroller_full": {}}]
+  },
+  "content_grid_panel_normal": {
+    "type": "panel",
+    "size": ["100% - 12px", "92%"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [0, -8],
+    "layer": 2,
+    "bindings": [{
+      "binding_type": "view",
+      "source_property_name": "(#title_text = 'KiwEss-Grid')",
+      "target_property_name": "#visible"
+    }],
+    "controls": [{"grid_scroller@kiw_content.grid_mode_scroller_normal": {}}]
+  },
+  "scroll_view_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100%", "100%c"],
+    "controls": [
+      {"description_area@kiw_content.description_area": {}},
+      {"divider@settings_common.option_group_section_divider": {}},
+      {"main_list_content@kiw_content.main_list_content": {}},
+      {"bottom_padding": {"type": "panel", "size": ["100%", 12]}}
+    ]
+  },
+  "list_scroller_full@common.scrolling_panel": {
+    "layer": 5,
+    "$show_background": false,
+    "$scrolling_content": "kiw_content.scroll_view_content",
+    "$scroll_size": [0, 0],
+    "$scrolling_pane_size": ["100%", "100%"]
+  },
+  "list_scroller@common.scrolling_panel": {
+    "layer": 5,
+    "$show_background": false,
+    "$scrolling_content": "kiw_content.scroll_view_content",
+    "$scroll_size": [0, 0],
+    "$scroll_track_size": [0, 0],
+    "$scrolling_pane_size": ["100%", "100%"]
+  },
+  "grid_mode_scroller_full@common.scrolling_panel": {
+    "layer": 5,
+    "$show_background": false,
+    "$scrolling_content": "kiw_content.grid_wrap_panel_full",
+    "$scroll_size": [0, 0],
+    "$scroll_track_size": [0, 0],
+    "$scrolling_pane_size": ["100%", "100%"]
+  },
+  "grid_mode_scroller_normal@common.scrolling_panel": {
+    "layer": 5,
+    "$show_background": false,
+    "$scrolling_content": "kiw_content.grid_wrap_panel_normal",
+    "$scroll_size": [0, 0],
+    "$scroll_track_size": [0, 0],
+    "$scrolling_pane_size": ["100%", "100%"]
+  },
+  "main_list_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100%", "100%c"],
+    "factory": {
+      "name": "content_buttons",
+      "control_ids": {
+        "button": "kiw_content.content_button",
+        "label": "@server_form.dynamic_label",
+        "header": "@server_form.dynamic_header",
+        "divider": "@settings_common.option_group_section_divider"
+      }
+    },
+    "collection_name": "form_buttons",
+    "bindings": [{"binding_name": "#form_button_contents", "binding_name_override": "#collection_length"}]
+  },
+  "content_button": {
+    "type": "panel",
+    "size": ["96%", 34],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "bindings": [
+      {"binding_type": "collection_details", "binding_collection_name": "form_buttons"},
+      {"binding_name": "#form_button_text", "binding_name_override": "#button_text", "binding_type": "collection", "binding_collection_name": "form_buttons"},
+      {"binding_type": "view", "source_property_name": "(not ((#form_button_text = '') or (#form_button_text = 'List Mode') or (#form_button_text = 'Grid Mode') or (#form_button_text = '§aList Mode') or (#form_button_text = '§aGrid Mode') or (#form_button_text = '§a§lList Mode') or (#form_button_text = '§a§lGrid Mode') or (#form_button_text = '§a§lMode List') or (#form_button_text = '§a§lMode Grid') or (#form_button_text = 'Back') or (#form_button_text = 'back') or (#form_button_text = '← Back') or (#form_button_text = 'Balik') or (#form_button_text = 'Tutup Menu')))", "target_property_name": "#visible"}
+    ],
+    "controls": [{
+      "button": {
+        "type": "button",
+        "size": ["100%", 30],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "focus_enabled": true,
+        "default_control": "default",
+        "hover_control": "hover",
+        "pressed_control": "pressed",
+        "locked_control": "hover",
+        "button_mappings": [
+          {"from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed"},
+          {"from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed"}
+        ],
+        "bindings": [{"binding_type": "collection_details", "binding_collection_name": "form_buttons"}],
+        "controls": [
+          {"default@kiw_content.content_button_state": {"$bg_texture": "textures/button/default"}},
+          {"hover@kiw_content.content_button_state": {"$bg_texture": "textures/button/hover"}},
+          {"pressed@kiw_content.content_button_state": {"$bg_texture": "textures/button/hover"}}
+        ]
+      }
+    }]
+  },
+  "content_button_state": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {"bg": {"type": "image", "texture": "$bg_texture", "nineslice_size": 6, "size": ["100%", "100%"]}},
+      {"icon_bg": {"type": "image", "texture": "textures/ui/White", "color": [0, 0, 0], "alpha": 0.3, "size": [22, 22], "anchor_from": "left_middle", "anchor_to": "left_middle", "offset": [5, 0], "layer": 1}},
+      {"icon": {"type": "image", "layer": 5, "anchor_from": "left_middle", "anchor_to": "left_middle", "offset": [7, 0], "size": [18, 18], "bindings": [{"binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons"}, {"binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons"}, {"binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible"}]}},
+      {"label": {"type": "label", "layer": 5, "anchor_from": "left_middle", "anchor_to": "left_middle", "offset": [32, 0], "text": "#form_button_text", "color": [1, 1, 1], "shadow": true, "font_scale_factor": 0.9, "bindings": [{"binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons"}]}},
+      {"arrow": {"type": "label", "text": "§7>", "anchor_from": "right_middle", "anchor_to": "right_middle", "offset": [-8, 0], "layer": 5}}
+    ]
+  },
+  "grid_wrap_panel_full": {
+    "type": "panel",
+    "size": ["100%", "100%c"],
+    "controls": [{"grid@kiw_content.grid_layout_full": {}}]
+  },
+  "grid_wrap_panel_normal": {
+    "type": "panel",
+    "size": ["100%", "100%c"],
+    "controls": [{"grid@kiw_content.grid_layout_normal": {}}]
+  },
+  "grid_layout_full@kiw_content.grid_layout": {"grid_dimensions": [4, 5]},
+  "grid_layout_normal@kiw_content.grid_layout": {"grid_dimensions": [4, 9]},
+  "grid_layout": {
+    "type": "grid",
+    "grid_dimensions": [4, 10],
+    "grid_item_template": "kiw_content.grid_button_wrapper",
+    "collection_name": "form_buttons",
+    "size": ["100%", "100%c"],
+    "bindings": [{"binding_name": "#form_button_contents", "binding_name_override": "#collection_length"}]
+  },
+  "grid_button_wrapper": {
+    "type": "panel",
+    "size": ["25%", 60],
+    "bindings": [
+      {"binding_type": "collection_details", "binding_collection_name": "form_buttons"},
+      {"binding_name": "#form_button_text", "binding_name_override": "#button_text", "binding_type": "collection", "binding_collection_name": "form_buttons"},
+      {"binding_type": "view", "source_property_name": "(not ((#form_button_text = '') or (#form_button_text = 'List Mode') or (#form_button_text = 'Grid Mode') or (#form_button_text = '§aList Mode') or (#form_button_text = '§aGrid Mode') or (#form_button_text = '§a§lList Mode') or (#form_button_text = '§a§lGrid Mode') or (#form_button_text = 'Back') or (#form_button_text = 'back') or (#form_button_text = '← Back')))", "target_property_name": "#visible"}
+    ],
+    "controls": [{"button@kiw_content.grid_button": {}}]
+  },
+  "grid_button": {
+    "type": "button",
+    "size": ["95%", 55],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "focus_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "locked_control": "hover",
+    "button_mappings": [
+      {"from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed"},
+      {"from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed"}
+    ],
+    "bindings": [{"binding_type": "collection_details", "binding_collection_name": "form_buttons"}],
+    "controls": [
+      {"default@kiw_content.grid_button_state": {"$bg_texture": "textures/button/default"}},
+      {"hover@kiw_content.grid_button_state": {"$bg_texture": "textures/button/hover"}},
+      {"pressed@kiw_content.grid_button_state": {"$bg_texture": "textures/button/hover"}}
+    ]
+  },
+  "grid_button_state": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {"bg": {"type": "image", "texture": "$bg_texture", "nineslice_size": 6, "size": ["100%", "100%"]}},
+      {"icon_container": {"type": "panel", "size": ["100%", 28], "anchor_from": "top_middle", "anchor_to": "top_middle", "offset": [0, 4], "controls": [{"icon": {"type": "image", "layer": 5, "size": [24, 24], "anchor_from": "center", "anchor_to": "center", "bindings": [{"binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons"}, {"binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons"}, {"binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible"}]}}]}},
+      {"label": {"type": "label", "layer": 5, "size": ["90%", "default"], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [0, -6], "text": "#form_button_text", "color": [1, 1, 1], "shadow": true, "font_scale_factor": 0.9, "text_alignment": "center", "bindings": [{"binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons"}]}}
+    ]
+  }
+}
