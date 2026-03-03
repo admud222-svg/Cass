@@ -1,5 +1,0 @@
-{
-    "$show_inventory": true, 
-	"$border_and_background_texture": "textures/ui/dialog_background_opaque" 
-
-}
